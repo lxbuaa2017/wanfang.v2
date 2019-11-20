@@ -114,7 +114,7 @@ class WanfangSpider(scrapy.Spider):
         item['e_title']=e_title
         item['url']=url
         item['c_author']=c_author
-        item['e_author']=e_author
+        # item['e_author']=e_author
         item['c_periodical']=c_periodical
         item['e_periodical']=e_periodical
         item['indexID']=indexID
