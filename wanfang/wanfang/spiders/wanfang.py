@@ -11,7 +11,7 @@ class WanfangSpider(scrapy.Spider):
     name = 'wanfang'
     allowed_domains = ["wanfangdata.com.cn"]
     start_urls = [
-        'http://c.old.wanfangdata.com.cn/PeriodicalSubject.aspx?NodeId=T.TP&IsCore=true'
+        'http://c.old.wanfangdata.com.cn/PeriodicalSubject.aspx?NodeId=T.TP&IsCore=true&PageNo=2'
     ]
     # http://s.wanfangdata.com.cn/Paper.aspx?q=%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B+DBID%3aWF_QK&f=top&p=578
     cookies = {}
@@ -32,13 +32,13 @@ class WanfangSpider(scrapy.Spider):
 
     def __init__(self):
         self.count = 0
-        self.url_1 = 'http://c.old.wanfangdata.com.cn/PeriodicalSubject.aspx?NodeId=T.TP&IsCore=true'
+        self.url_1 = 'http://c.old.wanfangdata.com.cn/PeriodicalSubject.aspx?NodeId=T.TP&IsCore=true&PageNo=2'
 
     def parse(self, response):
         # 这里已经获得了核心期刊列表页的内容，接下来工作是抽取期刊的英文缩写
         sel = Selector(response)
         periodical_strs = []
-        for i in range(1, 49):
+        for i in range(1, 23):
             # 加@href链提取链接
             # 从中提取出的链接是：Periodical-bgzdh.aspx，下面是提取bgzdh的示例
             # str = 'Periodical-bgzdh.aspx'
